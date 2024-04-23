@@ -1,0 +1,28 @@
+name: Hello
+
+on: 
+   push:
+      branches: [ main ]
+   pull_request:
+       branches: [ main ]
+   workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      
+       - name: Setup Go ${{ matrix.go-version }}
+         uses: actions/checkout@v4
+         
+       - name: Run a one-line script
+         run: echo Hello, world!
+         
+       - name: Run a multi-line script
+         run: |
+            echo Add other actions to build,
+            echo test, and deploy your project
+
+       - name: My own action in te same repo
+         uses: ./ 
